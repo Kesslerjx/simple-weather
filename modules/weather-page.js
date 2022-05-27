@@ -3,6 +3,12 @@ import { getWeatherData } from "./handlers/weather-data-handler.js";
 //Elements
 const inputField = document.querySelector('#zip-code-input');
 const goButton = document.querySelector('#go-button');
+const weatherName = document.querySelector("#weather-name");
+const currentTemperature = document.querySelector("#current-temperature");
+const temperatureRange = document.querySelector("#temperature-range");
+const humidity = document.querySelector("#weather-humidity");
+const description = document.querySelector("#weather-description");
+const wind = document.querySelector("#weather-wind");
 
 //Loads the page with its initial content
 function loadPage() {
