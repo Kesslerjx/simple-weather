@@ -10,6 +10,9 @@ const temperatureRange = document.querySelector("#temperature-range");
 const humidity = document.querySelector("#weather-humidity");
 const description = document.querySelector("#weather-description");
 const wind = document.querySelector("#weather-wind");
+const imageWrapper = document.querySelector("#image-wrapper")
+const image = document.querySelector("#location-image");
+const imageCredit = document.querySelector("#image-credit");
 
 //Loads the page with its initial content
 function loadPage() {
@@ -44,4 +47,14 @@ function displayWeatherData(weatherData) {
     wind.textContent = weatherData.wind.speed;
 }
 
-export {loadPage, displayWeatherData}
+//Sets the image that is selected using the Pexels API
+function displayImage(img) {
+    console.log(img);
+    image.src = img.src.original;
+    imageCredit.textContent = `@${img.photographer}`;
+    imageCredit.href = img.url;
+    imageWrapper.classList.remove("not-visible");
+    imageWrapper.classList.add("flex-column");
+}
+
+export {loadPage, displayWeatherData, displayImage}

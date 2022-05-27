@@ -1,4 +1,5 @@
 import { displayWeatherData } from "../weather-page.js";
+import { getImage } from "./image-handler.js";
 
 const API_KEY = "dc85a2fb546d8ff5571b8b7d6a963de1";
 
@@ -23,9 +24,21 @@ async function getLocationData(URL) {
     try {
         const response = await fetch(URL, {mode: 'cors'});
         const data = await response.json();
+        getImage(await getUsersLocation(data.lat, data.lon));
         return [data.lat, data.lon];
     } catch (error) {
         console.log("There was an issue retreiving the latitude and longitude");
+        console.log(error);
+    }
+}
+
+async function getUsersLocation(latitude, longitude) {
+    try {
+        const response = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${API_KEY}`, {mode: 'cors'});
+        const data = await response.json();
+        return data[0].state;
+    } catch (error) {
+        console.log("There was an issue gettings the users location");
         console.log(error);
     }
 }
