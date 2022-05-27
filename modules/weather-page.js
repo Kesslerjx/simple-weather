@@ -1,8 +1,9 @@
-import { getWeatherData } from "./handlers/weather-data-handler.js";
+import { getWeatherData, refreshWeatherData } from "./handlers/weather-data-handler.js";
 
 //Elements
 const inputField = document.querySelector('#zip-code-input');
 const goButton = document.querySelector('#go-button');
+const refreshButton = document.querySelector("#refresh-button");
 const weatherName = document.querySelector("#weather-name");
 const currentTemperature = document.querySelector("#current-temperature");
 const temperatureRange = document.querySelector("#temperature-range");
@@ -14,6 +15,7 @@ const wind = document.querySelector("#weather-wind");
 function loadPage() {
 
     goButton.addEventListener('click', validateForm);
+    refreshButton.addEventListener('click', refreshWeatherData)
 
 }
 
@@ -32,6 +34,13 @@ function validateForm() {
 //Called from the getWeatherData function
 function displayWeatherData(weatherData) {
     console.log(weatherData);
+
+    weatherName.textContent = weatherData.name;
+    currentTemperature.textContent = weatherData.main.temp;
+    temperatureRange.textContent = `${weatherData.main.temp_min} - ${weatherData.main.temp_max}`;
+    humidity.textContent = weatherData.main.humidity
+    description.textContent = weatherData.weather[0].description
+    wind.textContent = weatherData.wind.speed;
 }
 
 export {loadPage, displayWeatherData}
