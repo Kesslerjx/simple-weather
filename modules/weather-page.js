@@ -26,8 +26,9 @@ function validateForm() {
         getWeatherData(inputField.value);
     } else {
         console.log("Invalid zip code.");
-        inputField.value = ""; //Clears the field
     }
+
+    inputField.value = ""; //Clears the field
 }
 
 //Puts the weather data in their respective elements
