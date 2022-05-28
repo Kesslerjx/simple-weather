@@ -6,6 +6,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     background-color: var(--light-blue);
     color: white;
+    font-weight: lighter;
 }
 
 header {
@@ -18,6 +19,7 @@ header {
 header > span {
     flex-shrink: 0;
     font-size: clamp(1.5rem, 3vw, 3rem);
+    font-weight: lighter;
 }
 
 header > div {
@@ -51,21 +53,49 @@ main {
     gap: 75px;
 }
 
+#weather-data {
+    margin-top: 5vw;
+    border-radius: 10px;
+    padding: 10px;
+    /*box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.689); /* https://www.joshwcomeau.com/css/designing-shadows/ */
+}
+
 #weather-header {
     display: flex;
     justify-content: space-between;
+}
+
+#weather-name {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+#weather-description {
+    text-transform: capitalize;
 }
 
 #weather-temperature {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+#current-temperature {
+    font-size: 7rem;
+    font-weight: 300;
 }
 
 #weather-details {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.icon {
+    height: 35px !important;
+    width: 35px !important;
 }
 
 .icon-text {
@@ -89,4 +119,5 @@ main {
 #location-image {
     width: 100%;
     object-fit: contain;
+    border-radius: 10px;
 }
