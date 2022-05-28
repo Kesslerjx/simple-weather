@@ -49,12 +49,16 @@ function displayWeatherData(weatherData) {
 
 //Sets the image that is selected using the Pexels API
 function displayImage(img) {
-    console.log(img);
-    image.src = img.src.original;
-    imageCredit.textContent = `@${img.photographer}`;
-    imageCredit.href = img.url;
-    imageWrapper.classList.remove("not-visible");
-    imageWrapper.classList.add("flex-column");
+    if(img === undefined || img === null) {
+        console.log("The image is undefined. There was probably an issue loading them or there were no images to display");
+    } else {
+        image.src = img.src.original;
+        imageCredit.textContent = `@${img.photographer}`;
+        imageCredit.href = img.url;
+        imageWrapper.classList.remove("not-visible");
+        imageWrapper.classList.add("flex-column");
+    }
+
 }
 
 export {loadPage, displayWeatherData, displayImage}

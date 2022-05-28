@@ -10,7 +10,7 @@ async function getWeatherData(zipcode) {
     try {
         currentZipcode = zipcode
         const locationData = await getLocationData(`http://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},US&appid=${API_KEY}`);
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${locationData[0]}&lon=${locationData[1]}&appid=${API_KEY}`, {mode: 'cors'});
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${locationData[0]}&lon=${locationData[1]}&appid=${API_KEY}&units=imperial`, {mode: 'cors'});
         const data = await response.json();
         displayWeatherData(data);
     } catch (error) {
