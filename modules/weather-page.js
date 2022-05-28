@@ -4,6 +4,7 @@ import { getWeatherData, refreshWeatherData } from "./handlers/weather-data-hand
 const inputField = document.querySelector('#zip-code-input');
 const goButton = document.querySelector('#go-button');
 const refreshButton = document.querySelector("#refresh-button");
+const weatherDataDiv = document.querySelector("#weather-data");
 const weatherName = document.querySelector("#weather-name");
 const currentTemperature = document.querySelector("#current-temperature");
 const temperatureRange = document.querySelector("#temperature-range");
@@ -45,6 +46,8 @@ function displayWeatherData(weatherData) {
     humidity.textContent = weatherData.main.humidity
     description.textContent = weatherData.weather[0].description
     wind.textContent = weatherData.wind.speed;
+
+    weatherDataDiv.style.display = "block";
 }
 
 //Sets the image that is selected using the Pexels API
@@ -52,9 +55,12 @@ function displayImage(img) {
     if(img === undefined || img === null) {
         console.log("The image is undefined. There was probably an issue loading them or there were no images to display");
     } else {
+        //Shows the image credit once it's loaded
+        image.onload = function(event) {
+            imageCredit.textContent = `@${img.photographer}`;
+            imageCredit.href = img.url;
+        }
         image.src = img.src.original;
-        imageCredit.textContent = `@${img.photographer}`;
-        imageCredit.href = img.url;
         imageWrapper.classList.remove("not-visible");
         imageWrapper.classList.add("flex-column");
     }
