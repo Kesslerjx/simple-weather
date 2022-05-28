@@ -45,7 +45,9 @@ async function getUsersLocation(latitude, longitude) {
 
 //Gets the weather data using the stored zipcode
 function refreshWeatherData() {
-    getWeatherData(currentZipcode);
+    if(currentZipcode !== undefined) {
+        getWeatherData(currentZipcode);
+    }
 }
 
 export {getWeatherData, refreshWeatherData}
